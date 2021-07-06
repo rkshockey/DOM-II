@@ -78,3 +78,18 @@ function goRed (event) {
     }
 }
 document.addEventListener(`scroll`, goRed);
+
+// Specifying intro
+const introTitle = document.querySelector(`.intro h2`);
+const introText = document.querySelector(`.intro p`);
+
+// copy and load
+function intro (event) {
+    introTitle.style.background = `cyan`
+}
+function steal (event) {
+    alert(`Stealing is bad!`)
+}
+
+window.addEventListener(`load`, intro)
+introText.addEventListener(`copy`, steal)
