@@ -43,3 +43,38 @@ function blue (event) {
 }
 islandButton.addEventListener(`mouseup`, blue)
 
+// Specifying Nav Bar
+const nav = Array.from(document.querySelectorAll(`nav a`))
+for (let i = 0; i < nav.length; i++){
+    nav[i] = document.querySelector(`nav a:nth-of-type(${i + 1})`)
+}
+
+// key down and up
+function navDown (event) {
+    nav[0].style.color = `red`;
+    nav[1].style.color = `gold`;
+    nav[2].style.color = `green`;
+    nav[3].style.color = `blue`;
+}
+document.addEventListener(`keydown`, navDown);
+
+function navUp (event) {
+    for (let i = 0; i < nav.length; i++){
+        nav[i].style.color = `black`;
+    }
+}
+document.addEventListener(`keyup`, navUp);
+
+// Specifying h2s
+const h2s = document.querySelectorAll(`h2`);
+for (let i = 0; i < h2s.length; i++){
+    h2s[i] = document.querySelector(`h2:nth-of-type(${i + 1})`);
+}
+
+// scroll
+function goRed (event) {
+    for (let i = 0; i < h2s.length; i++){
+        h2s[i].style.color = `red`;
+    }
+}
+document.addEventListener(`scroll`, goRed);
