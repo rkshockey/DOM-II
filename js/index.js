@@ -24,13 +24,16 @@ funButton.addEventListener(`mouseleave`, colorBack);
 mountainButton.addEventListener(`mouseleave`, colorBack);
 islandButton.addEventListener(`mouseleave`, colorBack);
 
-// Mouse click, double-click, and up
+// Mouse click, double-click, and up (Stop Propogation here)
 function green (event) {
     divs[0].querySelector(`h4`).style.color = `green`;
     divs[0].querySelector(`p`).style.color = `green`;
 }
 funButton.addEventListener(`click`, green);
-
+funButton.addEventListener(`click`, (event) => event.stopPropagation())
+divs[0].addEventListener(`click`, event => {
+    funButton.style.color = `yellow`;
+})
 function cyan (event) {
     divs[1].querySelector(`h4`).style.color = `cyan`;
     divs[1].querySelector(`p`).style.color = `cyan`;
@@ -43,11 +46,13 @@ function blue (event) {
 }
 islandButton.addEventListener(`mouseup`, blue)
 
-// Specifying Nav Bar
+// Specifying Nav Bar (Prevent Default here)
 const nav = Array.from(document.querySelectorAll(`nav a`))
 for (let i = 0; i < nav.length; i++){
     nav[i] = document.querySelector(`nav a:nth-of-type(${i + 1})`)
+    nav[i].addEventListener(`click`, event => event.preventDefault())
 }
+
 
 // key down and up
 function navDown (event) {
